@@ -1,4 +1,9 @@
 var backgrounds = ["watermelon.svg", "banana.svg", "lime.svg", "lime.svg", "grapes.svg", "mangosteen.svg",  "banana.svg", "passion-fruit.svg", "watermelon.svg", "mangosteen.svg", "passion-fruit.svg", "grapes.svg"];
+//losowanie ale zeby liczba par sie zgadzala
+// mozliwosc zresetowania planszy
+// czy kazda karta powinna byc osobnym elemenetem jquery - opakowac wszystkie karty w 1 obiekt
+//mozna z tego zrobic gre w sapera albo kolo fortuny
+var randomBg = backgrounds.sort(function(a, b){return 0.5 - Math.random()});
 
 var cards = document.querySelectorAll(".card");
 var oneVisible = false;
@@ -13,7 +18,7 @@ cards.forEach(function(item, index) {
         //alert(("ma index: " + index));
         if (!lock) {
             lock = true;
-            var bg = `url("images/${backgrounds[index]}")`;
+            var bg = `url("images/${randomBg[index]}")`;
             //var bg = `url("images/lime.svg")`;
             $(`#c${index}`).css('background-image', bg);
             //$(`#c${index}`).css('background-size', 'contain');
