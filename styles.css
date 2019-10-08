@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #fff66d;
+    background-color: #fff999;
+    color: #b28dff;
+    font-size: 20px;
+    font-family: 'Mansalva', cursive;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+
+}
+
+.board {
+    max-width: 640px;
+    min-width: 320px;
+
+border: 1px solid blue;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    background-color: #25B7D3;
+    width: 150px;
+    height: 150px;
+    margin: 5px;
+    background-image: url("images/question.svg");
+}
