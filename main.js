@@ -1,15 +1,17 @@
-var cards = ["watermelon.svg", "banana.svg", "lime.svg", "lime.svg", "grapes.svg", "mangosteen.svg",  "banana.svg", "passion-fruit.svg", "watermelon.svg", "mangosteen.svg", "passion-fruit.svg", "grapes.svg"];
+var backgrounds = ["watermelon.svg", "banana.svg", "lime.svg", "lime.svg", "grapes.svg", "mangosteen.svg",  "banana.svg", "passion-fruit.svg", "watermelon.svg", "mangosteen.svg", "passion-fruit.svg", "grapes.svg"];
 
 
-var cards2 = document.querySelectorAll(".card");
+var cards = document.querySelectorAll(".card");
 
-cards2.forEach(function(item, index) {
+cards.forEach(function(item, index) {
     item.addEventListener("click", function(){ 
         alert(("ma index: " + index));
+        var bg = `url(img/${backgrounds[index]})`;
     });
 });
 
-
+var oneVisible = false;
+var turnCounter = 0; //licznik rund
 
 /*
 fruits.forEach(myFunction);
