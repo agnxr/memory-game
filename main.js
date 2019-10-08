@@ -5,6 +5,7 @@ var cards = document.querySelectorAll(".card");
 var oneVisible = false;
 var turnCounter = 0; //licznik rund
 var visibleIndex; //index karty aktualnie widocznej to compare if both bakcgorunds are the same
+var lock = false;
 
 cards.forEach(function(item, index) {
     item.addEventListener("click", function(){ 
@@ -16,11 +17,12 @@ cards.forEach(function(item, index) {
         $(`#c${index}`).addClass('active');
         //$(`#c${index}`).removeClass('card');
 
-        if (!oneVisible) {
+        if (!oneVisible && !lock) {
             oneVisible = true;
             visibleIndex = index;
+            lock = false
         } else {
-            backgrounds[visibleIndex] == backgrounds[index] ? setTimeout(function() {hide2cards(index, visibleIndex)}, 750) : alert("pudło");
+            backgrounds[visibleIndex] == backgrounds[index] ? setTimeout(function() {hide2cards(index, visibleIndex)}, 750) : setTimeout(function() {restore2cards(index, visibleIndex)}, 1000);
 
             turnCounter++;
             $('.score').html(`Turn counter: ${turnCounter}`);
@@ -31,27 +33,17 @@ cards.forEach(function(item, index) {
 
 
 function hide2cards(firstItem, secondItem) {
-    $(`#c${firstItem}`).css('opacity', '0');
-    $(`#c${secondItem}`).css('opacity', '0');
-}
-/*
-fruits.forEach(myFunction);
-
-function myFunction(item, index) {
-  document.getElementById("demo").innerHTML += index + ":" + item + "<br>";
+    $(`#c${firstItem}`).css('visibility', 'hidden');
+    $(`#c${secondItem}`).css('visibility', 'hidden');
+    lock = false;
 }
 
-var inputs = document.querySelectorAll("input[type=text]")
-for (i = 0; i < inputs.length; i++) {
-  inputs[i].addEventListener('click', function() {
-    this.style.width = "500px";
-  });
+function restore2cards(firstItem, secondItem) {
+    $(`#c${firstItem}`).css('background-image', 'url("images/question.svg")');
+    $(`#c${firstItem}`).removeClass('active');
+    $(`#c${secondItem}`).css('background-image', 'url("images/question.svg")');
+    $(`#c${secondItem}`).removeClass('active');
+
+    lock = false;
 }
 
-c0.addEventListener("click", function(){ revealCard(0)});
-c1.addEventListener("click", function(){ revealCard(1)});
-
-function revealCard(nr) {
-    alert(nr);
-}
-*/
