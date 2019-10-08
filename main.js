@@ -20,7 +20,7 @@ cards.forEach(function(item, index) {
             oneVisible = true;
             visibleIndex = index;
         } else {
-            backgrounds[visibleIndex] == backgrounds[index] ? hide2cards(index, visibleIndex) : alert("pudło");
+            backgrounds[visibleIndex] == backgrounds[index] ? setTimeout(function() {hide2cards(index, visibleIndex)}, 750) : alert("pudło");
 
             turnCounter++;
             $('.score').html(`Turn counter: ${turnCounter}`);
