@@ -2,6 +2,9 @@ var backgrounds = ["watermelon.svg", "banana.svg", "lime.svg", "lime.svg", "grap
 
 
 var cards = document.querySelectorAll(".card");
+var oneVisible = false;
+var turnCounter = 0; //licznik rund
+var visibleIndex; //index karty aktualnie widocznej to compare if both bakcgorunds are the same
 
 cards.forEach(function(item, index) {
     item.addEventListener("click", function(){ 
@@ -12,12 +15,25 @@ cards.forEach(function(item, index) {
         //$(`#c${index}`).css('background-size', 'contain');
         $(`#c${index}`).addClass('active');
         //$(`#c${index}`).removeClass('card');
+
+        if (!oneVisible) {
+            oneVisible = true;
+            visibleIndex = index;
+        } else {
+            backgrounds[visibleIndex] == backgrounds[index] ? hide2cards(index, visibleIndex) : alert("pudło");
+
+            turnCounter++;
+            $('.score').html(`Turn counter: ${turnCounter}`);
+            oneVisible = false;
+        }
     });
 });
 
-var oneVisible = false;
-var turnCounter = 0; //licznik rund
 
+function hide2cards(firstItem, secondItem) {
+    $(`#c${firstItem}`).css('opacity', '0');
+    $(`#c${secondItem}`).css('opacity', '0');
+}
 /*
 fruits.forEach(myFunction);
 
