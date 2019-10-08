@@ -5,8 +5,13 @@ var cards = document.querySelectorAll(".card");
 
 cards.forEach(function(item, index) {
     item.addEventListener("click", function(){ 
-        alert(("ma index: " + index));
-        var bg = `url(img/${backgrounds[index]})`;
+        //alert(("ma index: " + index));
+        var bg = `url("images/${backgrounds[index]}")`;
+        //var bg = `url("images/lime.svg")`;
+        $(`#c${index}`).css('background-image', bg);
+        //$(`#c${index}`).css('background-size', 'contain');
+        $(`#c${index}`).addClass('active');
+        //$(`#c${index}`).removeClass('card');
     });
 });
 
